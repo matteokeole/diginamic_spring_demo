@@ -23,6 +23,14 @@ public class Person {
 
 	private int age;
 
+	public Person() {}
+
+	public Person(final String firstName, final String lastName, final int age) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+	}
+
 	@ManyToMany
 	private List<Animal> animals = new ArrayList<>();
 

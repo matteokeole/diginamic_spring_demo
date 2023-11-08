@@ -32,6 +32,7 @@ public class DemoApplication implements CommandLineRunner {
 		System.out.println("Person table size: %d".formatted(personRepository.findAll().size()));
 		System.out.println("Species table size: %d".formatted(speciesRepository.findAll().size()));
 
-		personRepository._deleteWhereAnimalsIsEmpty();
+		// personRepository.deleteWhereAnimalsIsEmpty();
+		personRepository.insertMany(3);
 	}
 }
