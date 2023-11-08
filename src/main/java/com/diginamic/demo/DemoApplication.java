@@ -1,10 +1,10 @@
 package com.diginamic.demo;
 
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.diginamic.demo.repository.AnimalRepository;
 import com.diginamic.demo.repository.PersonRepository;
