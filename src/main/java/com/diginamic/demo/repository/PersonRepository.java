@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.diginamic.demo.entity.Person;
 
 @Repository
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface PersonRepository extends JpaRepository<Person, Integer>, PersonRepositoryCustom {
 	public List<Person> findByFirstNameContainsOrLastNameContains(final String firstName, final String lastName);
 	public List<Person> findByLastName(final String lastName);
 	public List<Person> findByAgeGreaterThanEqual(final Integer age);

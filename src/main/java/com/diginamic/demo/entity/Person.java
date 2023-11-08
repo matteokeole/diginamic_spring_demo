@@ -3,18 +3,16 @@ package com.diginamic.demo.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="person")
 public class Person {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name="firstname")
@@ -26,13 +24,7 @@ public class Person {
 	private int age;
 
 	@ManyToMany
-	@JoinTable(
-		name="person_animals",
-		joinColumns=@JoinColumn(name="person_id"),
-		inverseJoinColumns=@JoinColumn(name="animals_id")
-	)
-	@Column(name="id_person")
-	private List<Animal> animals;
+	private List<Animal> animals = new ArrayList<>();
 
 	@Override
 	public String toString() {
@@ -67,11 +59,11 @@ public class Person {
 		this.age = age;
 	}
 
-	public List<Animal> getPets() {
+	public List<Animal> getAnimals() {
 		return animals;
 	}
 
-	public void setPets(final List<Animal> pets) {
-		this.animals = pets;
+	public void setAnimals(final List<Animal> animals) {
+		this.animals = animals;
 	}
 }

@@ -3,17 +3,15 @@ package com.diginamic.demo.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-
 import java.util.List;
 
 @Entity
-@Table(name="animal")
 public class Animal {
 	private static enum Gender {
 		MALE("Male"),
@@ -31,7 +29,7 @@ public class Animal {
 	}
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne
@@ -47,7 +45,7 @@ public class Animal {
 	private String color;
 
 	@ManyToMany(mappedBy="animals")
-	private List<Person> owners;
+	private List<Person> person;
 
 	@Override
 	public String toString() {
@@ -90,11 +88,11 @@ public class Animal {
 		this.color = color;
 	}
 
-	public List<Person> getOwners() {
-		return owners;
+	public List<Person> getPersons() {
+		return person;
 	}
 
-	public void setOwners(final List<Person> owners) {
-		this.owners = owners;
+	public void setPersons(final List<Person> persons) {
+		this.person = persons;
 	}
 }
