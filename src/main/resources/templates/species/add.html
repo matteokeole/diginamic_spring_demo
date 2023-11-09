@@ -1,10 +1,12 @@
 <main>
-	<form th:object="${species}" th:method="POST" th:action="@{/species/add}">
+	<h1>New species</h1>
+
+	<form th:object="${species}" th:method="POST" th:action="save">
 		<input type="hidden" th:field="*{id}">
 
 		<div>
 			<label for="common-name">Common name: </label>
-			<input th:field="*{commonName}" type="text" id="common-name" name="common" required>
+			<input th:field="*{commonName}" type="text" id="common-name" required>
 		</div>
 
 		<div>

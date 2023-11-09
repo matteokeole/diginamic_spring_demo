@@ -32,6 +32,10 @@ public class Species {
 		return id;
 	}
 
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
 	public String getCommonName() {
 		return commonName;
 	}
