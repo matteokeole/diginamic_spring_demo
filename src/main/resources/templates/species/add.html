@@ -1,0 +1,25 @@
+<main>
+	<form th:object="${species}" th:method="POST" th:action="@{/species/add}">
+		<input type="hidden" th:field="*{id}">
+
+		<div>
+			<label for="common-name">Common name: </label>
+			<input th:field="*{commonName}" type="text" id="common-name" name="common" required>
+		</div>
+
+		<div>
+			<label for="latin-name">Latin name: </label>
+			<input th:field="*{latinName}" type="text" id="latin-name" required>
+		</div>
+
+		<div>
+			<button type="submit">
+				Save
+			</button>
+
+			<button type="button" onclick="window.history.back">
+				Cancel
+			</button>
+		</div>
+	</form>
+</main>

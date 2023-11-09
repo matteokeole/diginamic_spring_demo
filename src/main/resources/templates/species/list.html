@@ -1,0 +1,17 @@
+<main>
+	<table>
+		<thead>
+			<tr>
+				<th>Common name</th>
+				<th>Latin name</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="species : ${species}">
+				<td th:text="${species.commonName}">
+				<td th:text="${species.latinName}">
+			</tr>
+		</tbody>
+	</table>
+</main>
