@@ -9,46 +9,46 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.diginamic.demo.entity.Species;
-import com.diginamic.demo.repository.SpeciesRepository;
+import com.diginamic.demo.entity.Person;
+import com.diginamic.demo.repository.PersonRepository;
 
-@Controller
-@RequestMapping("/species")
-public class SpeciesController {
+// @Controller
+// @RequestMapping("/persons")
+public class PersonController {
 	@Autowired
-	private SpeciesRepository speciesRepository;
+	private PersonRepository personRepository;
 
 	@GetMapping("")
 	public String list(final Model model) {
-		final List<Species> species = speciesRepository.findAll();
+		final List<Person> person = personRepository.findAll();
 
-		model.addAttribute("species", species);
+		model.addAttribute("person", person);
 
-		return "species/list";
+		return "person/list";
 	}
 
 	@GetMapping(name="add", path="/add")
 	public String add(final Model model) {
-		final Species species = new Species();
+		final Person person = new Person();
 
-		model.addAttribute("species", species);
+		model.addAttribute("person", person);
 
-		return "species/add";
+		return "person/add";
 	}
 
 	@GetMapping(name="show", path="/{id}")
 	public String show(@PathVariable("id") Integer id, final Model model) {
-		final Species species = speciesRepository.findById(id).get();
+		final Person person = personRepository.findById(id).get();
 
-		model.addAttribute("species", species);
+		model.addAttribute("person", person);
 
-		return "species/show";
+		return "person/show";
 	}
 
 	@PostMapping(name="save", path="/save")
-	public String save(final Species species) {
-		speciesRepository.save(species);
+	public String save(final Person person) {
+		personRepository.save(person);
 
-		return "redirect:/species";
+		return "redirect:/person";
 	}
 }
