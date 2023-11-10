@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.diginamic.demo.entity.Animal;
-import com.diginamic.demo.entity.Person;
 import com.diginamic.demo.repository.AnimalRepository;
 
 @Controller

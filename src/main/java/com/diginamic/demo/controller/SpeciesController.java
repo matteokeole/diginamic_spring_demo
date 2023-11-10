@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.diginamic.demo.entity.Person;
 import com.diginamic.demo.entity.Species;
 import com.diginamic.demo.repository.SpeciesRepository;
 
