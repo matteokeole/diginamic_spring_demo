@@ -26,10 +26,16 @@
 				<td th:text="${animal.species}">
 				<td th:text="${animal.gender}">
 				<td th:text="${animal.color}">
-				<td>
+				<td class="actions">
 					<a th:href="@{/animals/{id}(id=${animal.id})}">Edit</a>
 
-					<!-- Todo: delete -->
+					<form th:object="${animal}" th:method="DELETE" th:action="@{/animals/delete}">
+						<input type="hidden" id="id" name="id" th:value="*{id}">
+
+						<button type="submit">
+							Delete
+						</button>
+					</form>
 				</td>
 			</tr>
 		</tbody>

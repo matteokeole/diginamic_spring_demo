@@ -24,10 +24,16 @@
 				<td>
 					<i th:text="${species.latinName}">
 				</td>
-				<td>
+				<td class="actions">
 					<a th:href="@{/species/{id}(id=${species.id})}">Edit</a>
 
-					<!-- Todo: delete -->
+					<form th:object="${species}" th:method="DELETE" th:action="@{/species/delete}">
+						<input type="hidden" id="id" name="id" th:value="*{id}">
+
+						<button type="submit">
+							Delete
+						</button>
+					</form>
 				</td>
 			</tr>
 		</tbody>

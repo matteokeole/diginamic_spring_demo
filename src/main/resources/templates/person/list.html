@@ -22,10 +22,16 @@
 				</td>
 				<td th:text="${person}">
 				<td th:text="${person.age}">
-				<td>
+				<td class="actions">
 					<a th:href="@{/persons/{id}(id=${person.id})}">Edit</a>
 
-					<!-- Todo: delete -->
+					<form th:object="${person}" th:method="DELETE" th:action="@{/persons/delete}">
+						<input type="hidden" id="id" name="id" th:value="*{id}">
+
+						<button type="submit">
+							Delete
+						</button>
+					</form>
 				</td>
 			</tr>
 		</tbody>

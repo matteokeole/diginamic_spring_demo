@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +49,13 @@ public class PersonController {
 	@PostMapping(name="save", path="/save")
 	public String save(final Person person) {
 		personRepository.save(person);
+
+		return "redirect:/persons";
+	}
+
+	@DeleteMapping(name="delete", path="/delete")
+	public String delete(final Person person) {
+		personRepository.delete(person);
 
 		return "redirect:/persons";
 	}
