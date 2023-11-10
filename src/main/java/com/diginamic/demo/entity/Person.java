@@ -1,5 +1,6 @@
 package com.diginamic.demo.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Person {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@Column(name="firstname")
 	private String firstName;
@@ -23,6 +24,9 @@ public class Person {
 
 	private int age;
 
+	@ManyToMany(cascade=CascadeType.DETACH)
+	private List<Animal> animals = new ArrayList<>();
+
 	public Person() {}
 
 	public Person(final String firstName, final String lastName, final int age) {
@@ -31,16 +35,17 @@ public class Person {
 		this.age = age;
 	}
 
-	@ManyToMany
-	private List<Animal> animals = new ArrayList<>();
-
 	@Override
 	public String toString() {
-		return "%s %s, %d".formatted(firstName, lastName, age);
+		return "%s %s".formatted(firstName, lastName);
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(final Integer id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {

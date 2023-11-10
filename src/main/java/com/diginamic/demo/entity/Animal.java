@@ -1,5 +1,6 @@
 package com.diginamic.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -13,9 +14,9 @@ import java.util.List;
 
 @Entity
 public class Animal {
-	private static enum Gender {
-		MALE("Male"),
-		FEMALE("Female");
+	public static enum Gender {
+		M("Male"),
+		F("Female");
 
 		final String value;
 
@@ -32,28 +33,49 @@ public class Animal {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
+	private String name;
+
 	@ManyToOne
 	@JoinColumn(name="species_id")
 	private Species species;
 
 	@Enumerated(EnumType.STRING)
-	@JoinColumn(columnDefinition="sex")
+	@Column(name="sex")
 	private Gender gender;
-
-	private String name;
 
 	private String color;
 
 	@ManyToMany(mappedBy="animals")
 	private List<Person> person;
 
+	public Animal() {}
+
+	public Animal(final String name, final Species species, final Gender gender, final String color) {
+		this.name = name;
+		this.species = species;
+		this.gender = gender;
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
-		return "%s %s (%s)".formatted(gender, name, species);
+		return name;
 	}
 
 	public Integer getId() {
 		return id;
+	}
+
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	public Species getSpecies() {
@@ -70,14 +92,6 @@ public class Animal {
 
 	public void setGender(final Gender gender) {
 		this.gender = gender;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
 	}
 
 	public String getColor() {
