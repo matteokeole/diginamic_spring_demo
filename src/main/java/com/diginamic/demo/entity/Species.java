@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 
 @Entity
@@ -15,9 +17,13 @@ public class Species {
 	private Integer id;
 
 	@Column(name="common_name")
+	@NotBlank
+	@Size(max=2)
 	private String commonName;
 
 	@Column(name="latin_name")
+	@NotBlank
+	@Size(max=2)
 	private String latinName;
 
 	@OneToMany(mappedBy="species")

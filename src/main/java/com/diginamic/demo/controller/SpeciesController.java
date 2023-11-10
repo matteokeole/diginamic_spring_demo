@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.diginamic.demo.entity.Species;
 import com.diginamic.demo.repository.SpeciesRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping("/species")
@@ -47,7 +50,12 @@ public class SpeciesController {
 	}
 
 	@PostMapping(name="save", path="/save")
-	public String save(final Species species) {
+	@Valid
+	public String save(@Valid final Species species, final BindingResult result) {
+		if (result.hasErrors()) {
+			return "redirect:/species/new";
+		}
+
 		speciesRepository.save(species);
 
 		return "redirect:/species";
