@@ -14,41 +14,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.diginamic.demo.entity.Species;
-import com.diginamic.demo.service.SpeciesService;
+import com.diginamic.demo.entity.Animal;
+import com.diginamic.demo.service.AnimalService;
 
 @RestController
-@RequestMapping("/api/species")
-public class SpeciesController {
+@RequestMapping("/api/animals")
+public class AnimalController {
 	@Autowired
-	private SpeciesService speciesService;
+	private AnimalService animalService;
 
 	@GetMapping
-	public Page<Species> findAll(final Pageable pageable) {
-		return speciesService.findAll(pageable);
+	public Page<Animal> findAll(final Pageable pageable) {
+		return animalService.findAll(pageable);
 	}
 
 	@GetMapping("/{id}")
-	public Species find(@PathVariable("id") final Integer id) {
-		return speciesService
+	public Animal find(@PathVariable("id") final Integer id) {
+		return animalService
 			.find(id)
 			.orElseThrow(EntityNotFoundException::new);
 	}
 
 	@PostMapping
-	public void create(@RequestBody @Valid final Species species) {
-		speciesService.create(species);
+	public void create(@RequestBody @Valid final Animal animal) {
+		animalService.create(animal);
 	}
 
 	@PutMapping
-	public void update(@RequestBody @Valid final Species species) {
-		speciesService.update(species);
+	public void update(@RequestBody @Valid final Animal animal) {
+		animalService.update(animal);
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable("id") final Integer id) {
-		final Species species = speciesService.find(id).orElseThrow(EntityNotFoundException::new);
+		final Animal animal = animalService.find(id).orElseThrow(EntityNotFoundException::new);
 
-		speciesService.delete(species);
+		animalService.delete(animal);
 	}
 }
