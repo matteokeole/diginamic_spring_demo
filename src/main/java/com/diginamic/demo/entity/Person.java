@@ -13,7 +13,7 @@ import java.util.List;
 public class Person {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@Column(name="firstname")
 	private String firstName;
@@ -36,7 +36,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "%s %s, %d".formatted(firstName, lastName, age);
+		return "%s %s".formatted(firstName, lastName);
 	}
 
 	public Integer getId() {

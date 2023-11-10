@@ -25,7 +25,7 @@ public class Species {
 
 	@Override
 	public String toString() {
-		return "%s (lat. %s)".formatted(commonName, latinName);
+		return commonName;
 	}
 
 	public Integer getId() {

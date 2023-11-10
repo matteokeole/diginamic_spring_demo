@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.diginamic.demo.entity.Person;
 import com.diginamic.demo.repository.PersonRepository;
 
-// @Controller
-// @RequestMapping("/persons")
+@Controller
+@RequestMapping(name="person_", path="/persons")
 public class PersonController {
 	@Autowired
 	private PersonRepository personRepository;
 
 	@GetMapping("")
 	public String list(final Model model) {
-		final List<Person> person = personRepository.findAll();
+		final List<Person> persons = personRepository.findAll();
 
-		model.addAttribute("person", person);
+		model.addAttribute("persons", persons);
 
 		return "person/list";
 	}
@@ -36,13 +36,13 @@ public class PersonController {
 		return "person/add";
 	}
 
-	@GetMapping(name="show", path="/{id}")
-	public String show(@PathVariable("id") Integer id, final Model model) {
+	@GetMapping(name="edit", path="/{id}")
+	public String edit(@PathVariable("id") final Integer id, final Model model) {
 		final Person person = personRepository.findById(id).get();
 
 		model.addAttribute("person", person);
 
-		return "person/show";
+		return "person/edit";
 	}
 
 	@PostMapping(name="save", path="/save")

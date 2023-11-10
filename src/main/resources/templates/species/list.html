@@ -1,18 +1,30 @@
-<main>
+<main th:replace="~{layout::layout (~{::main})}">
 	<h1>Species</h1>
 
 	<table>
 		<thead>
 			<tr>
+				<th>ID</th>
 				<th>Common name</th>
 				<th>Latin name</th>
+				<th>Actions</th>
 			</tr>
 		</thead>
 
 		<tbody>
 			<tr th:each="species : ${species}">
+				<td>
+					<code th:text="${species.id}">
+				</td>
 				<td th:text="${species.commonName}">
-				<td th:text="${species.latinName}">
+				<td>
+					<i th:text="${species.latinName}">
+				</td>
+				<td>
+					<a th:href="@{/species/{id}(id=${species.id})}">Edit</a>
+
+					<!-- Todo: delete -->
+				</td>
 			</tr>
 		</tbody>
 	</table>

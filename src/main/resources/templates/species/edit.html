@@ -1,4 +1,4 @@
-<main>
+<main th:replace="~{layout::layout (~{::main})}">
 	<h1>Edit species</h1>
 
 	<form th:object="${species}" th:method="POST" th:action="save">

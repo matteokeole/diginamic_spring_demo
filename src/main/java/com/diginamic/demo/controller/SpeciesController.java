@@ -36,13 +36,13 @@ public class SpeciesController {
 		return "species/add";
 	}
 
-	@GetMapping(name="show", path="/{id}")
-	public String show(@PathVariable("id") Integer id, final Model model) {
+	@GetMapping(name="edit", path="/{id}")
+	public String edit(@PathVariable("id") final Integer id, final Model model) {
 		final Species species = speciesRepository.findById(id).get();
 
 		model.addAttribute("species", species);
 
-		return "species/show";
+		return "species/edit";
 	}
 
 	@PostMapping(name="save", path="/save")

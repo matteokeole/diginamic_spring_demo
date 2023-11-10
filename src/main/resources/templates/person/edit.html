@@ -1,0 +1,32 @@
+<main th:replace="~{layout::layout (~{::main})}">
+	<h1>Edit person</h1>
+
+	<form th:object="${person}" th:method="POST" th:action="save">
+		<input type="hidden" th:field="*{id}">
+
+		<label>
+			<span>First name</span>
+			<input th:field="*{firstName}" type="text" id="first-name" required>
+		</label>
+
+		<label>
+			<span>Last name</span>
+			<input th:field="*{lastName}" type="text" id="last-name" required>
+		</label>
+
+		<label>
+			<span>Age</span>
+			<input th:field="*{age}" type="number" id="age" required>
+		</label>
+
+		<div>
+			<button type="submit">
+				Save
+			</button>
+
+			<button type="button" onclick="window.history.back">
+				Cancel
+			</button>
+		</div>
+	</form>
+</main>

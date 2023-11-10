@@ -1,0 +1,29 @@
+<main th:replace="~{layout::layout (~{::main})}">
+	<h1>Persons</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Age</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr th:each="person : ${persons}">
+				<td>
+					<code th:text="${person.id}">
+				</td>
+				<td th:text="${person}">
+				<td th:text="${person.age}">
+				<td>
+					<a th:href="@{/persons/{id}(id=${person.id})}">Edit</a>
+
+					<!-- Todo: delete -->
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</main>

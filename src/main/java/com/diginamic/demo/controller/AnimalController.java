@@ -20,9 +20,9 @@ public class AnimalController {
 
 	@GetMapping("")
 	public String list(final Model model) {
-		final List<Animal> animal = animalRepository.findAll();
+		final List<Animal> animals = animalRepository.findAll();
 
-		model.addAttribute("animal", animal);
+		model.addAttribute("animals", animals);
 
 		return "animal/list";
 	}
@@ -36,13 +36,13 @@ public class AnimalController {
 		return "animal/add";
 	}
 
-	@GetMapping(name="show", path="/{id}")
-	public String show(@PathVariable("id") Integer id, final Model model) {
+	@GetMapping(name="edit", path="/{id}")
+	public String edit(@PathVariable("id") final Integer id, final Model model) {
 		final Animal animal = animalRepository.findById(id).get();
 
 		model.addAttribute("animal", animal);
 
-		return "animal/show";
+		return "animal/edit";
 	}
 
 	@PostMapping(name="save", path="/save")

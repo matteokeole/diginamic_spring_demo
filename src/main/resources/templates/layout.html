@@ -4,18 +4,19 @@
 	<head>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-		<title>All species</title>
+		<title>Thymeleaf Demo</title>
 	</head>
 
 	<body>
 		<header>
-			Header
+			<a th:href="@{/}">Home</a>
+			<a th:href="@{/persons}">Persons</a>
+			<a th:href="@{/animals}">Animals</a>
+			<a th:href="@{/species}">Species</a>
 		</header>
 
-		<main th:fragment="main"></main>
-
-		<footer>
-			Footer
-		</footer>
+		<main>
+			<th:block th:include="${template}">
+		</main>
 	</body>
 </html>

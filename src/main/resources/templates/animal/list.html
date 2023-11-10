@@ -1,13 +1,13 @@
-<main>
+<main th:replace="~{layout::layout (~{::main})}">
 	<h1>Animals</h1>
 
 	<table>
 		<thead>
 			<tr>
 				<th>ID</th>
+				<th>Name</th>
 				<th>Species</th>
 				<th>Gender</th>
-				<th>Name</th>
 				<th>Color</th>
 				<th>Actions</th>
 			</tr>
@@ -15,13 +15,15 @@
 
 		<tbody>
 			<tr th:each="animal : ${animals}">
-				<td th:text="${animal.id}">
+				<td>
+					<code th:text="${animal.id}">
+				</td>
+				<td th:text="${animal.name}">
 				<td th:text="${animal.species}">
 				<td th:text="${animal.gender}">
-				<td th:text="${animal.name}">
 				<td th:text="${animal.color}">
 				<td>
-					<a th:href="edit">Edit</a>
+					<a th:href="@{/animals/{id}(id=${animal.id})}">Edit</a>
 
 					<!-- Todo: delete -->
 				</td>
