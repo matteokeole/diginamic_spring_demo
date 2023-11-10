@@ -34,6 +34,10 @@ label {
 	margin-bottom: 16px;
 }
 
+label label {
+	margin-bottom: 0;
+}
+
 label span {
 	display: block;
 }

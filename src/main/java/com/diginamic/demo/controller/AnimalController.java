@@ -11,13 +11,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.diginamic.demo.entity.Animal;
+import com.diginamic.demo.entity.Species;
+import com.diginamic.demo.entity.Animal.Gender;
 import com.diginamic.demo.repository.AnimalRepository;
+import com.diginamic.demo.repository.SpeciesRepository;
 
 @Controller
 @RequestMapping("/animals")
 public class AnimalController {
 	@Autowired
 	private AnimalRepository animalRepository;
+
+	@Autowired
+	private SpeciesRepository speciesRepository;
 
 	@GetMapping("")
 	public String list(final Model model) {
@@ -31,8 +37,12 @@ public class AnimalController {
 	@GetMapping(name="new", path="/new")
 	public String _new(final Model model) {
 		final Animal animal = new Animal();
+		final List<Species> species = speciesRepository.findAll();
+		final List<Gender> genders = List.of(Gender.values());
 
 		model.addAttribute("animal", animal);
+		model.addAttribute("species", species);
+		model.addAttribute("genders", genders);
 
 		return "animal/new";
 	}
@@ -40,14 +50,19 @@ public class AnimalController {
 	@GetMapping(name="edit", path="/{id}")
 	public String edit(@PathVariable("id") final Integer id, final Model model) {
 		final Animal animal = animalRepository.findById(id).get();
+		final List<Species> species = speciesRepository.findAll();
+		final List<Gender> genders = List.of(Gender.values());
 
 		model.addAttribute("animal", animal);
+		model.addAttribute("species", species);
+		model.addAttribute("genders", genders);
 
 		return "animal/edit";
 	}
 
 	@PostMapping(name="save", path="/save")
 	public String save(final Animal animal) {
+		System.out.println(animal.getGender());
 		animalRepository.save(animal);
 
 		return "redirect:/animals";

@@ -11,28 +11,29 @@
 		<label>
 			<span>Name</span>
 
-			<input th:field="*{name}" type="text" required>
+			<input type="text" th:field="*{name}" required>
 		</label>
 
 		<label>
 			<span>Species</span>
 
-			<!-- Todo: select -->
-			<!-- <input th:field="*{species}" type="text" required> -->
+			<select th:field="*{species}">
+				<option th:each="species : ${species}" th:value="${species.id}" th:text="${species}">
+			</select>
 		</label>
 
 		<label>
 			<span>Gender</span>
 
-			<!-- Todo: radio buttons -->
-			<!-- <input th:field="*{gender}" type="text" required> -->
+			<label th:each="gender : ${genders}">
+				<input type="radio" th:field="*{gender}" th:value="${gender.name}" th:text="${gender}" required>
+			</label>
 		</label>
 
 		<label>
 			<span>Color</span>
 
-			<!-- Todo: color input -->
-			<input th:field="*{color}" type="text" required>
+			<input type="text" th:field="*{color}" placeholder="#FAF7EB" required>
 		</label>
 
 		<button type="submit">

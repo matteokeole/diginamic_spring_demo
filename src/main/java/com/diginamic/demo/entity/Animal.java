@@ -1,5 +1,6 @@
 package com.diginamic.demo.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
@@ -13,9 +14,9 @@ import java.util.List;
 
 @Entity
 public class Animal {
-	private static enum Gender {
-		MALE("Male"),
-		FEMALE("Female");
+	public static enum Gender {
+		M("Male"),
+		F("Female");
 
 		final String value;
 
@@ -37,7 +38,7 @@ public class Animal {
 	private Species species;
 
 	@Enumerated(EnumType.STRING)
-	@JoinColumn(columnDefinition="sex")
+	@Column(name="sex")
 	private Gender gender;
 
 	private String name;
@@ -49,7 +50,7 @@ public class Animal {
 
 	@Override
 	public String toString() {
-		return "%s %s (%s)".formatted(gender, name, species);
+		return name;
 	}
 
 	public Integer getId() {
