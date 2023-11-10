@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.diginamic.demo.entity.Person;
 import com.diginamic.demo.repository.PersonRepository;
 
+import jakarta.transaction.Transactional;
+
 @Controller
 @RequestMapping(name="person_", path="/persons")
 public class PersonController {
@@ -53,9 +55,25 @@ public class PersonController {
 		return "redirect:/persons";
 	}
 
+	@PostMapping(name="generate", path="/generate")
+	@Transactional
+	public String generate(final int count) {
+		personRepository.insertMany(count);
+
+		return "redirect:/persons";
+	}
+
 	@DeleteMapping(name="delete", path="/delete")
 	public String delete(final Person person) {
 		personRepository.delete(person);
+
+		return "redirect:/persons";
+	}
+
+	@DeleteMapping(name="delete", path="/delete-without-pets")
+	@Transactional
+	public String deleteWithoutPets() {
+		personRepository.deleteWhereAnimalsIsEmpty();
 
 		return "redirect:/persons";
 	}
