@@ -11,7 +11,7 @@ import com.diginamic.demo.entity.Person;
 public interface PersonRepository extends JpaRepository<Person, Integer>, PersonRepositoryCustom {
 	public List<Person> findByFirstNameContainsOrLastNameContains(final String firstName, final String lastName);
 	public List<Person> findByLastName(final String lastName);
-	public List<Person> findByAgeGreaterThanEqual(final Integer age);
+	public List<Person> findByAgeGreaterThanEqual(final int age);
 
 	@Query("SELECT p FROM Person p WHERE p.age BETWEEN :minAge AND :maxAge")
 	public List<Person> findByMinAgeAndMaxAge(final int minAge, final int maxAge);
