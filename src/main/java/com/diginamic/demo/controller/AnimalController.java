@@ -49,6 +49,6 @@ public class AnimalController {
 	public String save(final Animal animal) {
 		animalRepository.save(animal);
 
-		return "redirect:/animal";
+		return "redirect:/animals";
 	}
 }

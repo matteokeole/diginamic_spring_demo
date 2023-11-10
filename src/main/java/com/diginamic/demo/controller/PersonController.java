@@ -49,6 +49,6 @@ public class PersonController {
 	public String save(final Person person) {
 		personRepository.save(person);
 
-		return "redirect:/person";
+		return "redirect:/persons";
 	}
 }

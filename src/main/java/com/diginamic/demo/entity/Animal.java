@@ -56,6 +56,10 @@ public class Animal {
 		return id;
 	}
 
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
 	public Species getSpecies() {
 		return species;
 	}

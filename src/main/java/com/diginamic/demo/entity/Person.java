@@ -43,6 +43,10 @@ public class Person {
 		return id;
 	}
 
+	public void setId(final Integer id) {
+		this.id = id;
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
