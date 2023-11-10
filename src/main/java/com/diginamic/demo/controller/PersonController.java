@@ -27,13 +27,13 @@ public class PersonController {
 		return "person/list";
 	}
 
-	@GetMapping(name="add", path="/add")
-	public String add(final Model model) {
+	@GetMapping(name="new", path="/new")
+	public String _new(final Model model) {
 		final Person person = new Person();
 
 		model.addAttribute("person", person);
 
-		return "person/add";
+		return "person/new";
 	}
 
 	@GetMapping(name="edit", path="/{id}")

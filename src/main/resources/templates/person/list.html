@@ -1,6 +1,10 @@
 <main th:replace="~{layout::layout (~{::main})}">
 	<h1>Persons</h1>
 
+	<a th:href="@{/persons/new}">
+		Create new
+	</a>
+
 	<table>
 		<thead>
 			<tr>

@@ -27,13 +27,13 @@ public class SpeciesController {
 		return "species/list";
 	}
 
-	@GetMapping(name="add", path="/add")
-	public String add(final Model model) {
+	@GetMapping(name="new", path="/new")
+	public String _new(final Model model) {
 		final Species species = new Species();
 
 		model.addAttribute("species", species);
 
-		return "species/add";
+		return "species/new";
 	}
 
 	@GetMapping(name="edit", path="/{id}")
