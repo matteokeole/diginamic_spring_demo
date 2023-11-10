@@ -3,6 +3,8 @@ package com.diginamic.demo.service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.diginamic.demo.entity.Species;
@@ -13,8 +15,8 @@ public class SpeciesService {
 	@Autowired
 	private SpeciesRepository speciesRepository;
 
-	public List<Species> findAll() {
-		return speciesRepository.findAll();
+	public Page<Species> findAll(final Pageable pageable) {
+		return speciesRepository.findAll(pageable);
 	}
 
 	public List<Species> findByLatinNameIgnoreCaseContains(final String latinName) {

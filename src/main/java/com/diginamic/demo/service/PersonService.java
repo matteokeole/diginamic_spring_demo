@@ -3,6 +3,8 @@ package com.diginamic.demo.service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.diginamic.demo.entity.Person;
@@ -13,8 +15,8 @@ public class PersonService {
 	@Autowired
 	private PersonRepository personRepository;
 
-	public List<Person> findAll() {
-		return personRepository.findAll();
+	public Page<Person> findAll(final Pageable pageable) {
+		return personRepository.findAll(pageable);
 	}
 
 	public List<Person> findByFirstNameContainsOrLastNameContains(final String firstName, final String lastName) {
