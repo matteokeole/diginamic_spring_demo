@@ -33,6 +33,8 @@ public class Animal {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
+	private String name;
+
 	@ManyToOne
 	@JoinColumn(name="species_id")
 	private Species species;
@@ -41,12 +43,19 @@ public class Animal {
 	@Column(name="sex")
 	private Gender gender;
 
-	private String name;
-
 	private String color;
 
 	@ManyToMany(mappedBy="animals")
 	private List<Person> person;
+
+	public Animal() {}
+
+	public Animal(final String name, final Species species, final Gender gender, final String color) {
+		this.name = name;
+		this.species = species;
+		this.gender = gender;
+		this.color = color;
+	}
 
 	@Override
 	public String toString() {
@@ -59,6 +68,14 @@ public class Animal {
 
 	public void setId(final Integer id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(final String name) {
+		this.name = name;
 	}
 
 	public Species getSpecies() {
@@ -75,14 +92,6 @@ public class Animal {
 
 	public void setGender(final Gender gender) {
 		this.gender = gender;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(final String name) {
-		this.name = name;
 	}
 
 	public String getColor() {

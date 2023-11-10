@@ -23,6 +23,13 @@ public class Species {
 	@OneToMany(mappedBy="species")
 	private List<Animal> animals;
 
+	public Species() {}
+
+	public Species(final String commonName, final String latinName) {
+		this.commonName = commonName;
+		this.latinName = latinName;
+	}
+
 	@Override
 	public String toString() {
 		return commonName;
