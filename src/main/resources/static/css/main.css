@@ -41,3 +41,8 @@ label label {
 label span {
 	display: block;
 }
+
+label span.error {
+	color: #de1818;
+	font-size: 13px;
+}

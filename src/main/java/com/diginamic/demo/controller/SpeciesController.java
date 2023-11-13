@@ -53,7 +53,7 @@ public class SpeciesController {
 	@Valid
 	public String save(@Valid final Species species, final BindingResult result) {
 		if (result.hasErrors()) {
-			return "redirect:/species/new";
+			return "species/new";
 		}
 
 		speciesRepository.save(species);

@@ -12,12 +12,16 @@
 			<span>Common name</span>
 
 			<input type="text" th:field="*{commonName}" required>
+
+			<span th:if="${#fields.hasErrors('commonName')}" th:errors="*{commonName}" class="error"></span>
 		</label>
 
 		<label>
 			<span>Latin name</span>
 
 			<input type="text" th:field="*{latinName}" required>
+
+			<span th:if="${#fields.hasErrors('latinName')}" th:errors="*{latinName}" class="error"></span>
 		</label>
 
 		<button type="submit">

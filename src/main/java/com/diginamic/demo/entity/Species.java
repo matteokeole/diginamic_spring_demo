@@ -18,12 +18,12 @@ public class Species {
 
 	@Column(name="common_name")
 	@NotBlank
-	@Size(max=2)
+	@Size(max=255)
 	private String commonName;
 
 	@Column(name="latin_name")
 	@NotBlank
-	@Size(max=2)
+	@Size(max=255)
 	private String latinName;
 
 	@OneToMany(mappedBy="species")

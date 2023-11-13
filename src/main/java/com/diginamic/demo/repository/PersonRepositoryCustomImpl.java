@@ -12,7 +12,7 @@ public class PersonRepositoryCustomImpl implements PersonRepositoryCustom {
 	private EntityManager entityManager;
 
 	public void insertMany(final int count) {
-		final Faker faker = new Faker(new Locale("fr"));
+		final Faker faker = new Faker(Locale.CANADA_FRENCH);
 
 		Person person;
 
