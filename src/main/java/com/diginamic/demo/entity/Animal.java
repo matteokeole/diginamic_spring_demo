@@ -1,5 +1,6 @@
 package com.diginamic.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
@@ -46,7 +47,8 @@ public class Animal {
 	private String color;
 
 	@ManyToMany(mappedBy="animals")
-	private List<Person> person;
+	@JsonIgnore
+	private List<Person> persons;
 
 	public Animal() {}
 
@@ -103,10 +105,10 @@ public class Animal {
 	}
 
 	public List<Person> getPersons() {
-		return person;
+		return persons;
 	}
 
 	public void setPersons(final List<Person> persons) {
-		this.person = persons;
+		this.persons = persons;
 	}
 }

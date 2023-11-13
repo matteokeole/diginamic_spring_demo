@@ -1,5 +1,6 @@
 package com.diginamic.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,15 +19,16 @@ public class Species {
 
 	@Column(name="common_name")
 	@NotBlank
-	@Size(max=2)
+	@Size(max=255)
 	private String commonName;
 
 	@Column(name="latin_name")
 	@NotBlank
-	@Size(max=2)
+	@Size(max=255)
 	private String latinName;
 
 	@OneToMany(mappedBy="species")
+	@JsonIgnore
 	private List<Animal> animals;
 
 	public Species() {}
