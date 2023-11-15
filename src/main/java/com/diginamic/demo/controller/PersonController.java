@@ -37,11 +37,19 @@ public class PersonController {
 
 	@PostMapping
 	public void create(@RequestBody @Valid final Person person) {
+		if (person.getId() != null) {
+			throw new IllegalArgumentException("Person cannot have an id on creation");
+		}
+
 		personService.create(person);
 	}
 
 	@PutMapping
 	public void update(@RequestBody @Valid final Person person) {
+		if (person.getId() == null) {
+			throw new IllegalArgumentException("Person must have an id on update");
+		}
+
 		personService.update(person);
 	}
 

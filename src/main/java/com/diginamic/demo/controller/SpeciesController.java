@@ -37,11 +37,19 @@ public class SpeciesController {
 
 	@PostMapping
 	public void create(@RequestBody @Valid final Species species) {
+		if (species.getId() != null) {
+			throw new IllegalArgumentException("Species cannot have an id on creation");
+		}
+
 		speciesService.create(species);
 	}
 
 	@PutMapping
 	public void update(@RequestBody @Valid final Species species) {
+		if (species.getId() == null) {
+			throw new IllegalArgumentException("Species must have an id on update");
+		}
+
 		speciesService.update(species);
 	}
 

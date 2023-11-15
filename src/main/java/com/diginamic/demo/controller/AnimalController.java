@@ -37,11 +37,19 @@ public class AnimalController {
 
 	@PostMapping
 	public void create(@RequestBody @Valid final Animal animal) {
+		if (animal.getId() != null) {
+			throw new IllegalArgumentException("Animal cannot have an id on creation");
+		}
+
 		animalService.create(animal);
 	}
 
 	@PutMapping
 	public void update(@RequestBody @Valid final Animal animal) {
+		if (animal.getId() == null) {
+			throw new IllegalArgumentException("Animal must have an id on update");
+		}
+
 		animalService.update(animal);
 	}
 
