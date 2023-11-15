@@ -24,12 +24,12 @@ public class AnimalController {
 	private AnimalService animalService;
 
 	@GetMapping
-	public Page<Animal> findAll(final Pageable pageable) {
+	public Page<Animal> getAll(final Pageable pageable) {
 		return animalService.findAll(pageable);
 	}
 
 	@GetMapping("/{id}")
-	public Animal find(@PathVariable("id") final Integer id) {
+	public Animal get(@PathVariable("id") final Integer id) {
 		return animalService
 			.find(id)
 			.orElseThrow(EntityNotFoundException::new);

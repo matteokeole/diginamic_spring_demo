@@ -24,12 +24,12 @@ public class PersonController {
 	private PersonService personService;
 
 	@GetMapping
-	public Page<Person> findAll(final Pageable pageable) {
+	public Page<Person> getAll(final Pageable pageable) {
 		return personService.findAll(pageable);
 	}
 
 	@GetMapping("/{id}")
-	public Person find(@PathVariable("id") final Integer id) {
+	public Person get(@PathVariable("id") final Integer id) {
 		return personService
 			.find(id)
 			.orElseThrow(EntityNotFoundException::new);

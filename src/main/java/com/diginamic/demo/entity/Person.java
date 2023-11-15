@@ -24,7 +24,7 @@ public class Person {
 
 	private int age;
 
-	@ManyToMany(cascade=CascadeType.DETACH)
+	@ManyToMany
 	private List<Animal> animals = new ArrayList<>();
 
 	public Person() {}

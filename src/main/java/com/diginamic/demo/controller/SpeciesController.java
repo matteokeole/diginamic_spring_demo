@@ -24,12 +24,12 @@ public class SpeciesController {
 	private SpeciesService speciesService;
 
 	@GetMapping
-	public Page<Species> findAll(final Pageable pageable) {
+	public Page<Species> getAll(final Pageable pageable) {
 		return speciesService.findAll(pageable);
 	}
 
 	@GetMapping("/{id}")
-	public Species find(@PathVariable("id") final Integer id) {
+	public Species get(@PathVariable("id") final Integer id) {
 		return speciesService
 			.find(id)
 			.orElseThrow(EntityNotFoundException::new);
